@@ -1,0 +1,20 @@
+=== Testes do código ORIGINAL ===
+ID   | caminho                 | esperado                         | observado
+CT01 | CQ-C3                   | 10                               | 10  => PASSOU
+CT02 | CQ-C4+C3 (2 voltas)     | 5                                | 5  => PASSOU
+CT03 | CQ-C4                   | 0                                | 0  => PASSOU
+CT04 | CQ-C2                   | 0                                | 0  => PASSOU
+CT05 | CQ-C1                   | erro de leitura informado        | 0  => FALHOU
+CT06 | exceção não modelada    | erro tratado c/ msg clara        | NumberFormatException: For input string: "abc"  => FALHOU
+CT07 | exceção não modelada    | erro tratado c/ msg clara        | ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1  => FALHOU
+CT08 | CQ-C4 (entrada nula)    | IllegalArgumentException         | 0  => FALHOU
+CT09 | RS-C2                   | true; arquivo='A1;3'             | true; arquivo=''; ultima=A1  => FALHOU
+CT10 | RS-C2 (limite =)        | true                             | true  => PASSOU
+CT11 | RS-C1 (limite +1)       | false; ultima=''                 | false; ultima=''  => PASSOU
+CT12 | RS-C2 depois RS-C1      | true e false                     | true e true  => FALHOU
+CT13 | RS-C2 (negativo)        | IllegalArgumentException         | true  => FALHOU
+CT14 | RS-C2 (zero)            | IllegalArgumentException         | true  => FALHOU
+CT15 | RS-C3                   | erro de escrita informado        | false  => FALHOU
+------------------------------------------------------------
+Resumo ORIGINAL: 6 passaram, 9 falharam
+CT-NE1 (CQ-C5) e CT-NE2 (RS-C4) não são executáveis no original: ver README.

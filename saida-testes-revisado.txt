@@ -1,0 +1,22 @@
+=== Testes da versão REVISADA ===
+ID   | cenário                 | esperado                         | observado
+RT01 | encontrado 1ª linha     | 10                               | 10  => PASSOU
+RT02 | laço 2 voltas           | 5                                | 5  => PASSOU
+RT03 | não encontrado          | EstoqueException: Produto não encontrado no estoque: Z9 | EstoqueException: Produto não encontrado no estoque: Z9  => PASSOU
+RT04 | arquivo vazio           | EstoqueException: Produto não encontrado no estoque: A1 | EstoqueException: Produto não encontrado no estoque: A1  => PASSOU
+RT05 | arquivo inexistente     | IOException propagada            | IOException propagada  => PASSOU
+RT06 | quantidade inválida     | EstoqueException: Linha 1 com quantidade inválida: abc | EstoqueException: Linha 1 com quantidade inválida: abc  => PASSOU
+RT07 | linha sem ';'           | EstoqueException: Linha 1 do estoque fora do formato codigo;quantidade: A1 | EstoqueException: Linha 1 do estoque fora do formato codigo;quantidade: A1  => PASSOU
+RT08 | código nulo             | IllegalArgumentException: O código do produto é obrigatório. | IllegalArgumentException: O código do produto é obrigatório.  => PASSOU
+RT09 | readLine falha (double) | IOException: falha simulada no disco | IOException: falha simulada no disco  => PASSOU
+RT10 | saída válida            | true; mov='A1;3'; estoque=7; ultima=A1 | true; mov='A1;3'; estoque=7; ultima=A1  => PASSOU
+RT11 | limite = disponível     | true; estoque=0                  | true; estoque=0  => PASSOU
+RT12 | limite disponível+1     | false; mov=''; estoque=10; ultima='' | false; mov=''; estoque=10; ultima=''  => PASSOU
+RT13 | duas saídas de 6        | true e false                     | true e false  => PASSOU
+RT14 | quantidade negativa     | IllegalArgumentException: A quantidade de saída deve ser maior que zero. | IllegalArgumentException: A quantidade de saída deve ser maior que zero.  => PASSOU
+RT15 | quantidade zero         | IllegalArgumentException: A quantidade de saída deve ser maior que zero. | IllegalArgumentException: A quantidade de saída deve ser maior que zero.  => PASSOU
+RT16 | movimentações é pasta   | IOException propagada; estoque=10 | IOException propagada; estoque=10  => PASSOU
+RT17 | write falha (double)    | IOException: disco cheio (simulado); estoque=10; ultima='' | IOException: disco cheio (simulado); estoque=10; ultima=''  => PASSOU
+RT18 | código com ';'          | IllegalArgumentException: O código não pode conter ';' nem quebra de linha. | IllegalArgumentException: O código não pode conter ';' nem quebra de linha.  => PASSOU
+------------------------------------------------------------
+Resumo REVISADO: 18 passaram, 0 falharam

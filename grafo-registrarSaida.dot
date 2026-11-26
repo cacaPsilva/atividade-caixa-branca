@@ -1,0 +1,24 @@
+// Grafo de fluxo de controle - registrarSaida(String codigo, int quantidade) - código ORIGINAL
+// N = 8, E = 10, P = 1  ->  V(G) = 10 - 8 + 2 = 4
+digraph registrarSaida {
+  graph [rankdir=TB, fontname="Helvetica", label="registrarSaida(String codigo, int quantidade)  |  N=8  E=10  P=1  V(G)=4", labelloc=t, fontsize=16, nodesep=0.6, ranksep=0.5];
+  node  [shape=circle, fontname="Helvetica", fontsize=14, width=0.5, style=filled, fillcolor="#e8f0fb"];
+  edge  [fontname="Helvetica", fontsize=10];
+
+  1; 2 [fillcolor="#fff2cc"]; 3; 4; 5; 6 [fillcolor="#f8d7da"]; 7; 8 [shape=doublecircle];
+
+  1 -> 2 [label="e1"];
+  2 -> 3 [label="e2 V: quantidade <= disponivel"];
+  2 -> 7 [label="e3 F"];
+  3 -> 4 [label="e4"];
+  3 -> 6 [label="e5 IOException\n(new FileWriter)", color="#c0392b", fontcolor="#c0392b", style=dashed];
+  4 -> 5 [label="e6"];
+  4 -> 6 [label="e7 IOException\n(write)", color="#c0392b", fontcolor="#c0392b", style=dashed];
+  5 -> 8 [label="e8 return true"];
+  6 -> 7 [label="e9"];
+  7 -> 8 [label="e10 return false"];
+
+  legenda [shape=note, style=filled, fillcolor="#ffffff", fontsize=11, label=
+"1  (l.29) disponivel = consultarQuantidade(codigo)\l2  (l.30) if (quantidade <= disponivel)\l3  (l.32) escrita = new FileWriter(\"movimentacoes.txt\", true)\l4  (l.33) escrita.write(codigo + \";\" + quantidade + \"\\n\")\l5  (l.34-35) ultimaMovimentacao = codigo; return true\l6  (l.36-37) catch (IOException e) - vazio\l7  (l.40) return false\l8  saída do método\l"];
+  {rank=same; 1; legenda}
+}

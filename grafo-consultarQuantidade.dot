@@ -1,0 +1,26 @@
+// Grafo de fluxo de controle - consultarQuantidade(String codigo) - código ORIGINAL
+// N = 8, E = 11, P = 1  ->  V(G) = 11 - 8 + 2 = 5
+digraph consultarQuantidade {
+  graph [rankdir=TB, fontname="Helvetica", label="consultarQuantidade(String codigo)  |  N=8  E=11  P=1  V(G)=5", labelloc=t, fontsize=16, nodesep=0.6, ranksep=0.5];
+  node  [shape=circle, fontname="Helvetica", fontsize=14, width=0.5, style=filled, fillcolor="#e8f0fb"];
+  edge  [fontname="Helvetica", fontsize=10];
+
+  1; 2; 3 [fillcolor="#fff2cc"]; 4; 5 [fillcolor="#fff2cc"]; 6;
+  7 [fillcolor="#f8d7da"]; 8 [shape=doublecircle];
+
+  1 -> 2 [label="e1"];
+  2 -> 3 [label="e2"];
+  2 -> 7 [label="e3 IOException\n(FileNotFound)", color="#c0392b", fontcolor="#c0392b", style=dashed];
+  3 -> 4 [label="e4 V: linha != null"];
+  3 -> 8 [label="e5 F: linha == null\n(fim do laço)"];
+  3 -> 7 [label="e6 IOException\n(readLine)", color="#c0392b", fontcolor="#c0392b", style=dashed];
+  4 -> 5 [label="e7"];
+  5 -> 6 [label="e8 V: código igual"];
+  5 -> 3 [label="e9 F: próxima linha"];
+  6 -> 8 [label="e10 break"];
+  7 -> 8 [label="e11"];
+
+  legenda [shape=note, style=filled, fillcolor="#ffffff", fontsize=11, label=
+"1  (l.11) int quantidade = 0\l2  (l.13) abre BufferedReader/FileReader(\"estoque.csv\")\l3  (l.15) while ((linha = leitor.readLine()) != null)\l4  (l.16) colunas = linha.split(\";\")\l5  (l.17) if (colunas[0].equals(codigo))\l6  (l.18-19) quantidade = parseInt(colunas[1]); break\l7  (l.22-23) catch (IOException e) - vazio\l8  (l.25) return quantidade  (saída)\l"];
+  {rank=same; 1; legenda}
+}
